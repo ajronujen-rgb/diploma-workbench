@@ -1,0 +1,17 @@
+# Local secrets and editor state
+.env
+.env.*
+*.token
+*.credentials
+.vscode/
+
+# Temporary files and test output
+*.tmp
+*.bak
+*.log
+test-output/
+
+# A local diploma project must never live inside this repository
+Диплом/
+inbox/
+history/
