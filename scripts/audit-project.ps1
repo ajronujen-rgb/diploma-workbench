@@ -1,6 +1,6 @@
 param([Parameter(Mandatory=$true)][string]$ProjectPath)
 $ErrorActionPreference='Stop'; $project=[System.IO.Path]::GetFullPath($ProjectPath)
-$required=@('AGENTS.md','PROJECT_STATE.md','CHATGPT_START.md','журнал_работы.md','журнал_решений.md','01_понимание_задачи/AUTHOR_POSITION.md','02_источники/реестр_источников.md','inbox/pending','inbox/processed','inbox/needs-decision')
+$required=@('AGENTS.md','PROJECT_STATE.md','CHATGPT_START.md','журнал_работы.md','журнал_решений.md','01_понимание_задачи/AUTHOR_POSITION.md','02_источники/реестр_источников.md','09_финал/чеклист_оформления.md','inbox/pending','inbox/processed','inbox/needs-decision')
 $issues=@(); foreach($item in $required){if(-not(Test-Path -LiteralPath (Join-Path $project $item))){$issues+="Отсутствует: $item"}}
 $cards=Get-ChildItem -LiteralPath (Join-Path $project '02_источники/карточки') -Filter '*.md' -ErrorAction SilentlyContinue; $ids=@($cards|ForEach-Object{if($_.BaseName -match '^SRC-\d+$'){$_.BaseName}})
 if(($ids|Group-Object|Where-Object Count -gt 1).Count){$issues+='Есть дубли ID карточек источников.'}
